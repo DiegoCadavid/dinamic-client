@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const NavItem = ({ collapse, name }) => {
+const NavItem = ({ collapse, name, url}) => {
   const navigate = useNavigate();
 
   return (
@@ -11,7 +11,7 @@ const NavItem = ({ collapse, name }) => {
       } h-12 rounded-lg`}>
       <button
         onClick={() => {
-          navigate(`/table/${name}`);
+          navigate(url);
         }}
         className={`h-full w-full ${
           collapse && "font-medium text-lg uppercase text-rose-400 "
