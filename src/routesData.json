@@ -1,0 +1,4 @@
+{
+  "defaultLink": "http://localhost:8080",
+  "routes": ["user", "test", "no existe"]
+}
