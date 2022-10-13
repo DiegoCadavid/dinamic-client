@@ -22,7 +22,7 @@ const Home = () => {
             categoryName: "Servidor",
             repositoryLink: "https://github.com/DiegoCadavid/dinamic-server",
             textContent:
-              "Crear el API Rest ( CRUD ) con sus validaciones es tan sencillo comousar el metodo de una clase.",
+              "Crear el API Rest ( CRUD ) con sus validaciones es tan sencillo como usar el metodo de una clase.",
             imageUrlContent:
               "https://res.cloudinary.com/dd4p0ksdu/image/upload/v1665678447/file_upload_app/soage9mtavab4negylxe.png",
           },
