@@ -10,7 +10,7 @@ import routesData from "../../routesData.json";
 import tableContext from "./tableContext";
 
 const Table = ({}) => {
-  // view
+  // view <3
   const [isLoading, setIsLoading] = useState(true);
   const [isNoFound, setIsNoFound] = useState(false);
   const { id = "" } = useParams();
