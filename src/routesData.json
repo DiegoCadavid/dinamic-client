@@ -1,4 +1,4 @@
 {
   "defaultLink": "https://dinamic-server-production.up.railway.app",
-  "routes": ["user", "test", "no existe"]
+  "routes": ["user", "test","tio", "no existe"]
 }
