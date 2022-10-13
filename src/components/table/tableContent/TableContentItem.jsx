@@ -1,11 +1,16 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import routesData from "../../../routesData.json";
 import tableContext from "../tableContext";
 
-const TableContentItem = ({ item, index }) => {
+const TableContentItem = ({ item, index, editItem, isLoadingEdit = false }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { id: routeId, setData: setTable } = useContext(tableContext);
+
+  useEffect(() => {
+    setIsLoading(isLoadingEdit);
+  }, [isLoadingEdit])
+  
 
   const copyData = (text) => {
     return () => {
@@ -17,9 +22,9 @@ const TableContentItem = ({ item, index }) => {
         .catch(() => {
           alert("Error al copiar en el portapapeles");
         });
-      console.log(text);
     };
   };
+
 
   const deleteItem = () => {
     setIsLoading(true);
@@ -103,7 +108,7 @@ const TableContentItem = ({ item, index }) => {
               </svg>
             </button>
 
-            <button>
+            <button onClick={editItem}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
