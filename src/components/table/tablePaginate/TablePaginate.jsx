@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import tableContext from "../tableContext";
 
-const TablePaginate = ({ table = {}, setPage: setIndexPage }) => {
-  // CAMBIAR TODA ESTA PAGINACION Y HACER ESTA :
-  // https://bezkoder.com/wp-content/uploads/2020/08/vue-pagination-axios-api-bootstrap-vue-default.png
+const TablePaginate = ({ setPage: setIndexPage }) => {
 
+  const  {data:table } = useContext(tableContext);
+  
   const [pageInfo, setPageInfo] = useState({
     page: table.page || 0,
     pagesCount: table.pagesCount || 0,

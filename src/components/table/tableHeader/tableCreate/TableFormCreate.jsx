@@ -1,12 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TableModalCreate from "./TableModalCreate";
 import routesData from "../../../../routesData.json";
+import tableContext from "../../tableContext";
 
-const TableFormCreate = ({ id, setTable }) => {
+const TableFormCreate = () => {
   const [showModalCreate, setShowModalCreate] = useState(false);
   const [schema, setSchema] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { id, setData: setTable } = useContext(  tableContext );
+  
 
   useEffect(() => {
     setIsLoading(true);

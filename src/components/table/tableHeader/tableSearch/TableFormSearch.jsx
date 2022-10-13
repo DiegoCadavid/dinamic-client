@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import tableContext from "../../tableContext";
 import TableFormFilter from "./TableFormFilter";
 
-const TableFormSearch = ({ setQuerys }) => {
+const TableFormSearch = () => {
+
+  const { setQuerys } = useContext(tableContext);
+  
   const {
     register,
     handleSubmit,

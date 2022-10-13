@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import TableContent from "./tableContent/TableContent";
@@ -7,6 +7,7 @@ import TableHeader from "./tableHeader/TableHeader";
 import TablePaginate from "./tablePaginate/TablePaginate";
 
 import routesData from "../../routesData.json";
+import tableContext from "./tableContext";
 
 const Table = ({}) => {
   const [table, setTable] = useState({});
@@ -16,6 +17,7 @@ const Table = ({}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isNoFound, setIsNoFound] = useState(false);
   const { id = "" } = useParams();
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -65,14 +67,22 @@ const Table = ({}) => {
 
       {!isLoading && table?.data && (
         <>
-          <TableHeader name={id} setTable={setTable} setQuerys={setQuerys} />
+          <tableContext.Provider value={{
+            data: table,
+            setData: setTable,
+            setQuerys: setQuerys,
+            id: id
+          }}>
 
-          {table.data.length > 0 && (
-            <>
-              <TableContent table={table} id={id}/>
-              <TablePaginate table={table} setPage={setPage} />
-            </>
-          )}
+            <TableHeader />
+
+            {table.data.length > 0 && (
+              <>
+                <TableContent/>
+                <TablePaginate setPage={setPage} />
+              </>
+            )}
+          </tableContext.Provider>
 
           {table.data.length <= 0 && (
             <div className="flex-grow flex flex-col justify-center items-center font-bold text-rose-400">

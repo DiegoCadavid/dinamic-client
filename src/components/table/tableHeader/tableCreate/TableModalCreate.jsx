@@ -1,9 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import routesData from "../../../../routesData.json";
+import tableContext from "../../tableContext";
 
-const TableModalCreate = ({ closeModal, schema = [], id = "", setTable }) => {
+const TableModalCreate = ({ closeModal, schema = []}) => {
+
+  const { id, setData:setTable } = useContext(tableContext);
+
   const {
     register,
     handleSubmit,
@@ -38,7 +42,6 @@ const TableModalCreate = ({ closeModal, schema = [], id = "", setTable }) => {
     axios
       .post(`${routesData.defaultLink}/${id}`, formatData)
       .then(({ data: { _id, ...rest } }) => {
-        console.log(data);
         setTable((prevTable) => {
           const newTable = {
             page: prevTable.page,

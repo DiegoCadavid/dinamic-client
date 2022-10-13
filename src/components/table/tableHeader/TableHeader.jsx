@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import tableContext from "../tableContext";
+
 import TableFormCreate from "./tableCreate/TableFormCreate";
 import TableFormSearch from "./tableSearch/TableFormSearch";
 
-const TableHeader = ({ name, setQuerys, setTable }) => {
+const TableHeader = ({ setQuerys }) => {
+  const { id:name } = useContext(tableContext);
+
   return (
     <div className="flex h-12 items-center justify-between">
       {/* Titulo */}
@@ -19,7 +23,7 @@ const TableHeader = ({ name, setQuerys, setTable }) => {
       {/* Buscador */}
       <TableFormSearch setQuerys={setQuerys} />
 
-      <TableFormCreate setTable={setTable} id={name}/>
+      <TableFormCreate/>
     </div>
 
     

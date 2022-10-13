@@ -1,8 +1,13 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
+import tableContext from "../tableContext";
 import TableContentItem from "./TableContentItem";
 
-const TableContent = ({ table = {}, id = "" }) => {
+const TableContent = () => {
+
+  const {  data:table, id } =  useContext(tableContext);
+  
+
   return (
     <div className="flex-grow flex items-start justify-center overflow-y-auto ">
       <div className="w-full">
