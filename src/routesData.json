@@ -1,4 +1,4 @@
 {
-  "defaultLink": "http://localhost:8080",
+  "defaultLink": "https://dinamic-server-production.up.railway.app",
   "routes": ["user", "test", "no existe"]
 }
