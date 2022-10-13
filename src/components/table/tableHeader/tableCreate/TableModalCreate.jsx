@@ -4,9 +4,8 @@ import { useForm } from "react-hook-form";
 import routesData from "../../../../routesData.json";
 import tableContext from "../../tableContext";
 
-const TableModalCreate = ({ closeModal, schema = []}) => {
-
-  const { id, setData:setTable } = useContext(tableContext);
+const TableModalCreate = ({ closeModal, schema = [] }) => {
+  const { id, setData: setTable } = useContext(tableContext);
 
   const {
     register,
@@ -47,10 +46,13 @@ const TableModalCreate = ({ closeModal, schema = []}) => {
             page: prevTable.page,
             pagesCount: prevTable.pagesCount,
             perPage: prevTable.perPage,
-            data: [ {
-              _id,
-              ...rest
-            }, ...prevTable.data] 
+            data: [
+              {
+                _id,
+                ...rest,
+              },
+              ...prevTable.data,
+            ],
           };
 
           return newTable;
@@ -80,8 +82,7 @@ const TableModalCreate = ({ closeModal, schema = []}) => {
       <div className="absolute inset-x-80 rounded-lg p-3 bg-zinc-100">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="h-full flex flex-col justify-between "
-        >
+          className="h-full flex flex-col justify-between ">
           <div className="flex flex-col gap-3">
             {errorMessage != "" && (
               <div>
@@ -215,8 +216,7 @@ const TableModalCreate = ({ closeModal, schema = []}) => {
             ) : (
               <button
                 type="button"
-                className="w-full bg-rose-400 cursor-default p-2 rounded-md text-zinc-100 flex justify-center items-center"
-              >
+                className="w-full bg-rose-400 cursor-default p-2 rounded-md text-zinc-100 flex justify-center items-center">
                 <div className="w-4 h-4 border-4 border-transparent border-t-zinc-100 animate-spin rounded-full">
                   {" "}
                 </div>
@@ -226,8 +226,7 @@ const TableModalCreate = ({ closeModal, schema = []}) => {
             <button
               onClick={closeModal}
               className=" p-2 px-3 border-2 border-zinc-400 hover:bg-zinc-400 hover:disabled:bg-transparent rounded-md text-zinc-500 hover:text-zinc-100 hover:disabled:text-zinc-500 transition-colors ease-in"
-              disabled={isLoading}
-            >
+              disabled={isLoading}>
               Cancelar
             </button>
           </div>

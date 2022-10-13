@@ -4,9 +4,7 @@ import tableContext from "../tableContext";
 import TableContentItem from "./TableContentItem";
 
 const TableContent = () => {
-
-  const {  data:table, id } =  useContext(tableContext);
-  
+  const { data: table, id } = useContext(tableContext);
 
   return (
     <div className="flex-grow flex items-start justify-center overflow-y-auto ">
@@ -27,8 +25,7 @@ const TableContent = () => {
                   return (
                     <td
                       className="p-2 pb-3 pt-6 font-medium text-rose-400 border border-zinc-300"
-                      key={name}
-                    >
+                      key={name}>
                       {name}
                     </td>
                   );
@@ -42,7 +39,14 @@ const TableContent = () => {
           <tbody>
             {/* Elementos  */}
             {table.data.map((item, i) => {
-              return ( <TableContentItem key={item._id} item={item} index={i} routeId={id}/> )
+              return (
+                <TableContentItem
+                  key={item._id}
+                  item={item}
+                  index={i}
+                  routeId={id}
+                />
+              );
             })}
           </tbody>
         </table>

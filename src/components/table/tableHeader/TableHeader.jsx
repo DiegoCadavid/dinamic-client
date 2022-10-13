@@ -5,7 +5,7 @@ import TableFormCreate from "./tableCreate/TableFormCreate";
 import TableFormSearch from "./tableSearch/TableFormSearch";
 
 const TableHeader = ({ setQuerys }) => {
-  const { id:name } = useContext(tableContext);
+  const { id: name } = useContext(tableContext);
 
   return (
     <div className="flex h-12 items-center justify-between">
@@ -19,14 +19,12 @@ const TableHeader = ({ setQuerys }) => {
             .join("")}
         </h2>
       </div>
-    
+
       {/* Buscador */}
       <TableFormSearch setQuerys={setQuerys} />
 
-      <TableFormCreate/>
+      <TableFormCreate />
     </div>
-
-    
   );
 };
 

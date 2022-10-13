@@ -4,8 +4,6 @@ import Nav from "./components/nav/Nav";
 import Table from "./components/table/Table";
 
 function App() {
-  
-
   return (
     <div className="flex bg-zinc-100">
       <Nav />

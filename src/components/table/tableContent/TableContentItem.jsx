@@ -7,7 +7,7 @@ const TableContentItem = ({ routeId = "", item, index }) => {
     axios
       .delete(`${routesData.defaultLink}/${routeId}/${item._id}`)
       .then((res) => {
-        alert('Se elimino el elemento :v')
+        alert("Se elimino el elemento :v");
       })
       .catch((err) => {
         console.log(err);
@@ -21,8 +21,7 @@ const TableContentItem = ({ routeId = "", item, index }) => {
         return (
           <td
             className="p-2 border overflow-auto"
-            key={`${itemData}${item._id}`}
-          >
+            key={`${itemData}${item._id}`}>
             {" "}
             {item[itemData].toString()}{" "}
           </td>
@@ -37,8 +36,7 @@ const TableContentItem = ({ routeId = "", item, index }) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 stroke-red-700 hover:bg-red-300 rounded-md p-1 transition-colors ease-in"
-          >
+            className="w-6 h-6 stroke-red-700 hover:bg-red-300 rounded-md p-1 transition-colors ease-in">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -54,8 +52,7 @@ const TableContentItem = ({ routeId = "", item, index }) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 stroke-slate-500 hover:bg-slate-300   rounded-md p-1 transition-colors ease-in"
-          >
+            className="w-6 h-6 stroke-slate-500 hover:bg-slate-300   rounded-md p-1 transition-colors ease-in">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"

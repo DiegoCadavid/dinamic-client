@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import tableContext from "../tableContext";
 
 const TablePaginate = ({ setPage: setIndexPage }) => {
+  const { data: table } = useContext(tableContext);
 
-  const  {data:table } = useContext(tableContext);
-  
   const [pageInfo, setPageInfo] = useState({
     page: table.page || 0,
     pagesCount: table.pagesCount || 0,
@@ -34,8 +33,7 @@ const TablePaginate = ({ setPage: setIndexPage }) => {
             key={page}
             className={`h-8 w-8 rounded-full ${
               page != pageInfo.page ? "bg-rose-400" : "bg-rose-700"
-            } hover:bg-rose-600 transition-colors ease-in text-sm text-zinc-100`}
-          >
+            } hover:bg-rose-600 transition-colors ease-in text-sm text-zinc-100`}>
             {" "}
             {page}{" "}
           </button>

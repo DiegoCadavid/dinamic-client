@@ -10,14 +10,15 @@ import routesData from "../../routesData.json";
 import tableContext from "./tableContext";
 
 const Table = ({}) => {
-  const [table, setTable] = useState({});
-  const [querys, setQuerys] = useState("");
-  const [page, setPage] = useState(1);
-
+  // view
   const [isLoading, setIsLoading] = useState(true);
   const [isNoFound, setIsNoFound] = useState(false);
   const { id = "" } = useParams();
 
+  // Data
+  const [table, setTable] = useState({});
+  const [querys, setQuerys] = useState("");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     setIsLoading(true);
@@ -67,18 +68,18 @@ const Table = ({}) => {
 
       {!isLoading && table?.data && (
         <>
-          <tableContext.Provider value={{
-            data: table,
-            setData: setTable,
-            setQuerys: setQuerys,
-            id: id
-          }}>
-
+          <tableContext.Provider
+            value={{
+              data: table,
+              setData: setTable,
+              setQuerys: setQuerys,
+              id: id,
+            }}>
             <TableHeader />
 
             {table.data.length > 0 && (
               <>
-                <TableContent/>
+                <TableContent />
                 <TablePaginate setPage={setPage} />
               </>
             )}
@@ -93,8 +94,7 @@ const Table = ({}) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-16 h-16"
-              >
+                className="w-16 h-16">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

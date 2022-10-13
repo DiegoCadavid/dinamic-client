@@ -9,8 +9,7 @@ const TableFormCreate = () => {
   const [schema, setSchema] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { id, setData: setTable } = useContext(  tableContext );
-  
+  const { id, setData: setTable } = useContext(tableContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,16 +39,14 @@ const TableFormCreate = () => {
       {!isLoading ? (
         <button
           onClick={openModalCreate}
-          className="h-full aspect-square flex items-center justify-center gap-0.5 text-zinc-100 bg-rose-400 hover:bg-rose-600 transition-colors ease-in p-1 rounded-full "
-        >
+          className="h-full aspect-square flex items-center justify-center gap-0.5 text-zinc-100 bg-rose-400 hover:bg-rose-600 transition-colors ease-in p-1 rounded-full ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={2.5}
             stroke="currentColor"
-            className="w-4 h-4"
-          >
+            className="w-4 h-4">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -61,7 +58,14 @@ const TableFormCreate = () => {
         <div className="w-6 h-6 border-4 border-transparent border-t-rose-500 rounded-full animate-spin"></div>
       )}
 
-      {showModalCreate && <TableModalCreate closeModal={closeModalCreate} setTable={setTable} id={id} schema={schema} />}
+      {showModalCreate && (
+        <TableModalCreate
+          closeModal={closeModalCreate}
+          setTable={setTable}
+          id={id}
+          schema={schema}
+        />
+      )}
     </div>
   );
 };
