@@ -44,7 +44,6 @@ const TableContent = () => {
                   key={item._id}
                   item={item}
                   index={i}
-                  routeId={id}
                 />
               );
             })}
