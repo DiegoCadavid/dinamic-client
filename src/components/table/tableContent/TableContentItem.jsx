@@ -5,7 +5,7 @@ import tableContext from "../tableContext";
 
 const TableContentItem = ({ item, index, editItem, isLoadingEdit = false }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const { id: routeId, setData: setTable } = useContext(tableContext);
+  const { id: routeId, setData: setTable, data:dataTable, setPage, page, axiosGetData } = useContext(tableContext);
 
   useEffect(() => {
     setIsLoading(isLoadingEdit);
@@ -32,21 +32,41 @@ const TableContentItem = ({ item, index, editItem, isLoadingEdit = false }) => {
     axios
       .delete(`${routesData.defaultLink}/${routeId}/${item._id}`)
       .then(() => {
-        setTable(({ data = [], ...rest }) => {
-          const newData = data.filter((i) => {
-            if (i._id == item._id) {
-              return false;
-            }
-
-            return true;
+        if(dataTable.data.length > 1) {
+          return setTable(({ data = [], ...rest }) => {
+            const newData = data.filter((i) => {
+              if (i._id == item._id) {
+                return false;
+              }
+              
+              return true;
+            })
+            
+            return {
+              data: newData,
+              ...rest,
+            };
           });
+        } 
+        
+        if (dataTable.pagesCount <= 1) {
+          setTable(({ data, ...rest }) => {
+            return {
+              data: [],
+              ...rest,
+            };
+          });
+        }
 
-          return {
-            data: newData,
-            ...rest,
-          };
-        });
-      })
+        // 2 < 2
+        // Pagecount  < page
+        if (dataTable.pagesCount == page) {
+          return  setPage((prevPage) => prevPage - 1);
+        }
+
+        // En caso de que estemos en la primera primera pagina y hay mas elementos
+        axiosGetData();
+        })
       .catch((err) => {
         console.log(err);
         alert("Error al eliminar el elemento");

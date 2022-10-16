@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import tableContext from "../tableContext";
 
-const TablePaginate = ({ setPage: setIndexPage }) => {
-  const { data: table } = useContext(tableContext);
-
-  const [pageInfo, setPageInfo] = useState({
+const TablePaginate = () => {
+  const { data: table, setPage:setIndexPage } = useContext(tableContext);
+  
+  const pageInfo = {
     page: table.page || 0,
     pagesCount: table.pagesCount || 0,
-  });
+  }
 
   const [pages, setPages] = useState([]);
 
