@@ -30,6 +30,20 @@ const TableForm = ({
             }
           }
 
+          if (v.name == "minlength") {
+            options.minLength = {
+              value: v.value,
+              message: `${name} debe tener mas letras que ${v.value}`,
+            };
+          }
+
+          if (v.name == "maxlength") {
+            options.maxLength = {
+              value: v.value,
+              message: `${name} debe tener menos letras que ${v.value}`,
+            };
+          }
+          
           if (v.name == "min") {
             options.min = {
               value: v.value,
